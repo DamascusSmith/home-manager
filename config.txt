@@ -1,0 +1,7 @@
+This is purely a test file
+
+I want to see if the symlinks are linking to here or not.
+
+I  am  curious :D
+
+Have a good day :)
