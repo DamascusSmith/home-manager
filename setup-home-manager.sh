@@ -2,6 +2,8 @@
 
 set -Eeuo pipefail
 
+#Gets rid of a bunch of GTK Warnings
+unset LD_PRELOAD
 # Configuration
 
 REPO_URL="https://github.com/DamascusSmith/home-manager.git"
@@ -145,8 +147,11 @@ activate_home_manager() {
     fi
 
     log "Activating Home Manager configuration"
-		HOME_MANAGER_BACKUP_EXT=backup \
-		HOME_MANAGER_BACKUP_OVERWRITE=1 \
+
+		local backup_ext
+		backup_ext="backup-$(date +%Y%m%d-%H%M%S)"
+
+		HOME_MANAGER_BACKUP_EXT="$backup_ext" \
 		env -u LD_PRELOAD \
 		"${activation_package}/activate"
 }
