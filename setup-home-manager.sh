@@ -145,7 +145,7 @@ activate_home_manager() {
     fi
 
     log "Activating Home Manager configuration"
-		HOME_MANAGER_BACKUP_EXI=backup \
+		HOME_MANAGER_BACKUP_EXT=backup \
 		HOME_MANAGER_BACKUP_OVERWRITE=1 \
 		env -u LD_PRELOAD \
 		"${activation_package}/activate"
