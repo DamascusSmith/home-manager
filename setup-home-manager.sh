@@ -134,6 +134,7 @@ activate_home_manager() {
     # --no-link avoids creating a result symlink inside the repository.
     activation_package="$(
         nix build \
+						--impure \
             "${REPO_DIR}#homeConfigurations.${HM_PROFILE}.activationPackage" \
             --no-link \
             --print-out-paths

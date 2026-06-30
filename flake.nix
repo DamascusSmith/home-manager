@@ -22,6 +22,10 @@
     { nixpkgs, nixpkgs-old, home-manager, nixgl, ... }:
     let
       system = "x86_64-linux";
+
+			username = builtins.getEnv "USER";
+			homeDirectory = builtins.getEnv "HOME";
+
       pkgs = nixpkgs.legacyPackages.${system};
 			oldPkgs = nixpkgs-old.legacyPackages.${system};	
     in
@@ -32,12 +36,14 @@
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
 				extraSpecialArgs = {
-					inherit nixgl oldPkgs;
+					inherit username homeDirectory nixgl oldPkgs;
 				};
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
-        modules = [ ./home.nix ];
+        modules = [ 
+					./home.nix
+				];
       };
     };
 }

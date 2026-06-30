@@ -1,4 +1,4 @@
-{ config, pkgs, oldPkgs, nixgl, ... }:
+{ config, pkgs, username, homeDirectory, oldPkgs, nixgl, ... }:
 let
 	ghostty = config.lib.nixGL.wrap pkgs.ghostty;
 
@@ -23,8 +23,8 @@ in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "damascussmith";
-  home.homeDirectory = "/home/damascussmith";
+	home.username = username;
+	home.homeDirectory = homeDirectory;
 
 	targets.genericLinux.enable = true;
 
