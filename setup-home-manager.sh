@@ -145,7 +145,10 @@ activate_home_manager() {
     fi
 
     log "Activating Home Manager configuration"
-    "${activation_package}/activate"
+		HOME_MANAGER_BACKUP_EXI=backup \
+		HOME_MANAGER_BACKUP_OVERWRITE=1 \
+		env -u LD_PRELOAD \
+		"${activation_package}/activate"
 }
 
 install_bootstrap_dependencies
